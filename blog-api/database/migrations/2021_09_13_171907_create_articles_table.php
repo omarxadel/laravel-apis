@@ -21,11 +21,6 @@ class CreateArticlesTable extends Migration
                 ->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->unsignedBigInteger('article_id');
-            $table
-                ->foreign('article_id')
-                ->references('id')
-                ->on('articles');
             $table->string('body');
             $table->timestamps();
         });
