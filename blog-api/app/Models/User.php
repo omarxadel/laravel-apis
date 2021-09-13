@@ -17,11 +17,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -30,15 +26,24 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        // 'remember_token',
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array
+     * Get the article author.
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'foreign_key');
+    }
 }
