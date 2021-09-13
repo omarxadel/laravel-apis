@@ -1,2 +1,2 @@
-# laravel-apis
-Laravel API training.
+# Laravel APIs
+Laravel APIs for practicing Laravel.
